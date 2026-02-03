@@ -1,6 +1,6 @@
 version: 1
 services:
-  - type: postgreql
+  - type: postgresql
     name: hs_validator_db
     plan: free
     databaseName: hs_validator
