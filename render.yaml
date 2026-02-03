@@ -1,9 +1,10 @@
 version: 1
 services:
-  - type: postgresql
+  - type: pserv
     name: hs-validator-db
     plan: free
     databaseName: hs_validator
+    runtime: docker
     user: postgres
 
   - type: web
