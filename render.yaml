@@ -2,26 +2,26 @@ version: 1
 
 services:
   - type: pserv
-    name: hs_validator
+    name: hs-validator-db
     plan: free
 
   - type: web
     name: HS-Code-Validator
-    runtime: docker
+    env: docker
     dockerfilePath: ./Dockerfile
     plan: free
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: production
-      - key: DATABASE_URL
+      - key: SPRING_DATASOURCE_URL
         fromDatabase:
           name: hs-validator-db
           property: connectionString
-      - key: DB_USERNAME
+      - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: hs-validator-db
           property: user
-      - key: DB_PASSWORD
+      - key: SPRING_DATASOURCE_PASSWORD
         fromDatabase:
           name: hs-validator-db
           property: password
