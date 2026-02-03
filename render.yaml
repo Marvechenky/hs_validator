@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hs-code-validator
+    runtime: java
+    rootDir: HS-Code-Validator
+    buildCommand: ./mvnw clean install -DskipTests
+    startCommand: java -Dserver.port=$PORT -jar target/*.jar
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
