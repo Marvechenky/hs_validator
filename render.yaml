@@ -1,7 +1,7 @@
 services:
   - type: web
     name: hs-code-validator
-    runtime: java
+    env: java
     rootDir: HS-Code-Validator
     buildCommand: ./mvnw clean install -DskipTests
     startCommand: java -Dserver.port=$PORT -jar target/*.jar
