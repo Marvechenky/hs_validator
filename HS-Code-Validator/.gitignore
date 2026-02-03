@@ -61,3 +61,10 @@ docker-data/
 
 
 
+.env
+.env.local
+*.key
+*.pem
+target/
+*.jar
+*.war
