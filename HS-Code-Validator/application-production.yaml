@@ -1,11 +1,13 @@
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
     hikari:
       maximum-pool-size: 5
       connection-timeout: 30000
+      minimum-idle: 2
+      idle-timeout: 300000
 
   flyway:
     url: ${spring.datasource.url}
@@ -22,10 +24,16 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
 
 server:
   port: ${PORT:8080}
+  shutdown: graceful
 
 logging:
   level:
     org.flywaydb: INFO
+    org.hibernate.SQL: WARN

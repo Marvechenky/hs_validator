@@ -37,9 +37,9 @@ WORKDIR /app
 # Copy the application JAR
 COPY --from=builder --chown=spring:spring /app/target/*.jar app.jar
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
-  CMD curl -f http://localhost:${PORT:-8080}/actuator/health || exit 1
+# Health check - use wget since it's lighter
+HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
 
 EXPOSE 8080
 
