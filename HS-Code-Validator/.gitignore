@@ -42,8 +42,22 @@ Thumbs.db
 # Environment variables (IMPORTANT!)
 .env
 .env.local
+.env.*.local
+application-secrets.yml
+*.key
+*.pem
+*.p12
 application-local.yaml
 application.yaml
 
 # Compiled files
 *.class
+
+
+# Docker
+docker-data/
+!docker-compose.yml
+
+
+
+

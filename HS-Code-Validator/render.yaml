@@ -1,0 +1,34 @@
+version: 1
+services:
+  - type: postgres
+    name: hs-validator-db
+    plan: free
+    databaseName: hs_validator
+    user: postgres
+    ipAllowList: []
+
+  - type: web
+    name: hs-code-validator
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      # Render automatically injects these from the database
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: hs-validator-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: hs-validator-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: hs-validator-db
+          property: password
+      # Add any other secrets here in Render dashboard
+      - key: ENCRYPTION_KEY
+        sync: false  # Will be set manually in Render dashboard
+    healthCheckPath: /actuator/health
