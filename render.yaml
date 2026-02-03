@@ -1,7 +1,7 @@
 version: 1
 services:
   - type: postgres
-    name: hs-validator-db
+    name: hs_validator_db
     plan: free
     databaseName: hs_validator
     user: postgres
@@ -18,15 +18,15 @@ services:
       # Render automatically injects these from the database
       - key: SPRING_DATASOURCE_URL
         fromDatabase:
-          name: hs-validator-db
+          name: hs_validator_db
           property: connectionString
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
-          name: hs-validator-db
-          property: user
+          name: hs_validator_db
+          property: postgres
       - key: SPRING_DATASOURCE_PASSWORD
         fromDatabase:
-          name: hs-validator-db
+          name: hs_validator_db
           property: password
       # Add any other secrets here in Render dashboard
       - key: ENCRYPTION_KEY
