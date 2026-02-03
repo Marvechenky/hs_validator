@@ -11,17 +11,17 @@ RUN mvn dependency:go-offline -B
 # Copy source code
 COPY src ./src
 
-# Build application
-RUN mvn clean package -DskipTests -Pdocker
+# Build application - NO PROFILE NEEDED
+RUN mvn clean package -DskipTests
 
 # Runtime image
 FROM eclipse-temurin:21-jre-alpine
 
-# Install curl for health checks (small Alpine package)
+# Install curl for health checks
 RUN apk add --no-cache curl
 
 # JVM optimizations for containers
-ENV JAVA_OPTS="\
+ENV JAVA_TOOL_OPTIONS="\
     -XX:+UseContainerSupport \
     -XX:MaxRAMPercentage=75.0 \
     -XX:+ExitOnOutOfMemoryError \
@@ -37,11 +37,11 @@ WORKDIR /app
 # Copy the application JAR
 COPY --from=builder --chown=spring:spring /app/target/*.jar app.jar
 
-# Health check - waits for Flyway validation
-HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=90s --retries=3 \
   CMD curl -f http://localhost:${PORT:-8080}/actuator/health || exit 1
 
-# Expose port (Render will set PORT env variable)
 EXPOSE 8080
 
-ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]
+# Use shell form to allow environment variable expansion
+ENTRYPOINT ["sh", "-c", "java ${JAVA_TOOL_OPTIONS} -jar app.jar"]
