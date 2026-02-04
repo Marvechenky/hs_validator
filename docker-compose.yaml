@@ -16,7 +16,7 @@ services:
       - hs-network
 
   app:
-    build: .
+    build: HS-Code-Validator
     container_name: hs_validator_app
     ports:
       - "8080:8080"

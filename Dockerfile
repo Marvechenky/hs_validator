@@ -4,12 +4,12 @@ FROM maven:3.9.6-eclipse-temurin-21-alpine AS builder
 WORKDIR /app
 
 # Copy pom.xml first for dependency caching
-COPY pom.xml .
+COPY HS-Code-Validator/pom.xml .
 # Download dependencies (cached layer)
 RUN mvn dependency:go-offline -B
 
 # Copy source code
-COPY src ./src
+COPY HS-Code-Validator/src ./src
 
 # Build application - NO PROFILE NEEDED
 RUN mvn clean package -DskipTests
