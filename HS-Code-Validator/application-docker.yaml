@@ -5,9 +5,6 @@ spring:
     password: ${SPRING_DATASOURCE_PASSWORD:password}
 
   flyway:
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
     baseline-on-migrate: true
     locations: classpath:db/migration
     validate-on-migrate: true
