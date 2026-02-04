@@ -1,23 +1,9 @@
-pring:
+spring:
   datasource:
     url: jdbc:postgresql://${PGHOST}:${PGPORT}/${PGDATABASE}
     username: ${PGUSER}
     password: ${PGPASSWORD}
     driver-class-name: org.postgresql.Driver
-    hikari:
-      maximum-pool-size: 5
-      connection-timeout: 30000
-      minimum-idle: 2
-      idle-timeout: 300000
-
-  flyway:
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    baseline-on-migrate: true
-    locations: classpath:db/migration
-    validate-on-migrate: true
-    clean-disabled: true
 
   jpa:
     hibernate:
@@ -25,16 +11,11 @@ pring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        jdbc:
-          batch_size: 20
-        order_inserts: true
-        order_updates: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
 
 server:
   port: ${PORT:8080}
-  shutdown: graceful
-
-logging:
-  level:
-    org.flywaydb: INFO
-    org.hibernate.SQL: WARN
