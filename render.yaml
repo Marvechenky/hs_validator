@@ -1,11 +1,17 @@
 version: 1
 
+databases:
+  - name: hs_validator
+    databaseName: hs_code_validator
+    user: hs_code
+    plan: free
+
 services:
   - type: web
     name: hs-code-validator
     env: docker
-    dockerfilePath: ./Dockerfile
     plan: free
+    dockerfilePath: ./Dockerfile
 
     envVars:
       - key: SPRING_PROFILES_ACTIVE
