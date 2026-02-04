@@ -1,10 +1,6 @@
 version: 1
 
 services:
-  - type: pserv
-    name: hs_validator
-    plan: free
-
   - type: web
     name: hs-code-validator
     env: docker
