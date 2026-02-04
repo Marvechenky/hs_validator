@@ -8,6 +8,7 @@ services:
   - type: web
     name: hs-code-validator
     env: docker
+    rootDirectory: ./backend
     dockerfilePath: ./Dockerfile
     plan: free
     envVars:
