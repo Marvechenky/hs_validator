@@ -6,7 +6,7 @@ services:
     plan: free
 
   - type: web
-    name: HS-Code-Validator
+    name: hs-code-validator
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
