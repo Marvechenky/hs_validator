@@ -6,27 +6,34 @@ services:
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
+
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: production
+
       - key: PGHOST
         fromDatabase:
           name: hs_validator
           property: host
+
       - key: PGPORT
         fromDatabase:
           name: hs_validator
           property: port
+
       - key: PGDATABASE
         fromDatabase:
           name: hs_validator
           property: database
+
       - key: PGUSER
         fromDatabase:
           name: hs_validator
           property: user
+
       - key: PGPASSWORD
         fromDatabase:
           name: hs_validator
           property: password
+
     healthCheckPath: /actuator/health
