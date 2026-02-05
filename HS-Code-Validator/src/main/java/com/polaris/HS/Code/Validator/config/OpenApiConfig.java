@@ -24,7 +24,7 @@ public class OpenApiConfig {
     @Value("${server.port}")
     private String port;
 
-    @Value("${spring.profiles.active:local}")
+    @Value("${spring.profiles.active:production}")
     private String profile;
 
     @Bean
