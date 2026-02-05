@@ -12,16 +12,16 @@ import java.util.List;
 @Configuration
 public class OpenApiConfig {
 
-    @Value("${hscode.swagger.title}")
+    @Value("${hscode.swagger.title:HS Code Validator API}")
     private String title;
 
-    @Value("${hscode.swagger.description}")
+    @Value("${hscode.swagger.description:HS code validation API}")
     private String description;
 
     @Value("${hscode.server-url:}")
     private String serverUrl;
 
-    @Value("${server.port}")
+    @Value("${server.port:8080}")
     private String port;
 
     @Value("${spring.profiles.active:production}")
