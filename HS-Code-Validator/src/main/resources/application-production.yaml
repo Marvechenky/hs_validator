@@ -20,4 +20,7 @@ spring:
 server:
   port: ${PORT:8080}
 
+hscode:
+  server-url: https://hs-code-validator.onrender.com
+
 
