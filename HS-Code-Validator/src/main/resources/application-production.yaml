@@ -25,9 +25,10 @@ gemini:
   model:
     name: gemini-2.5-flash
 
+
 logistics:
   customs:
-    api-url: https://comtrade.un.org/data/doc/api/
+    api-url: ${LOGISTICS_CUSTOMS_API_URL}
 
 hscode:
   server-url: https://hs-code-validator.onrender.com

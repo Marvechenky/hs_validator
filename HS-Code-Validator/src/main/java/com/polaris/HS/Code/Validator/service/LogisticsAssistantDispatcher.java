@@ -3,16 +3,9 @@ package com.polaris.HS.Code.Validator.service;
 import com.polaris.HS.Code.Validator.util.NameStore;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
+
 
 @Service
 @Slf4j

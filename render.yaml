@@ -20,6 +20,9 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
+      - key: LOGISTICS_CUSTOMS_API_URL
+        value: https://comtrade.un.org/data/doc/api/
+
       - key: PGHOST
         fromDatabase:
           name: hs_validator
