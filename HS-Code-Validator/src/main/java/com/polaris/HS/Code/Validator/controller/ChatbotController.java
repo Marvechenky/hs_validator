@@ -24,7 +24,7 @@ public class ChatbotController {
     @Operation(summary = "Welcome message by chatbot")
     public ResponseEntity<String> welcome(HttpSession session){
         return ResponseEntity.ok(
-                "Hello, I am Seda Assistant. What's your name?");
+                "Hello, I am Seada Assistant. What's your name?");
     }
 
     @PostMapping("/chatbot")
