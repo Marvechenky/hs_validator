@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 public class HsSectionInference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "section_code", nullable = false)
     private String sectionCode;
 
-    @Column(name = "section_vector", columnDefinition = "tsvector")
+    @Column(name = "section_vector", columnDefinition = "tsvector", nullable = false)
     private String sectionVector;
 
 }
