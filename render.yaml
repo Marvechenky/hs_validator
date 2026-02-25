@@ -17,6 +17,9 @@ services:
       - key: SPRING_PROFILES_ACTIVE
         value: production
 
+      - key: GEMINI_API_KEY
+        sync: false
+
       - key: PGHOST
         fromDatabase:
           name: hs_validator

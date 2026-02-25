@@ -7,6 +7,7 @@ CREATE INDEX idx_hs_code_level
 CREATE INDEX idx_hs_code_parent
     ON hs_code (parent_code);
 
-CREATE INDEX idx_hs_code_description_fts
+
+CREATE INDEX idx_hs_code_search_vector
     ON hs_code
-    USING GIN (to_tsvector('english', description));
+    USING GIN (search_vector);

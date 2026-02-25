@@ -7,8 +7,11 @@ CREATE TABLE hs_code (
     description TEXT NOT NULL,
 
     parent_code VARCHAR(10),
-
     section VARCHAR(5) NOT NULL,
+
+    search_vector tsvector GENERATED ALWAYS AS(
+        to_tsvector('english_hs', description)
+    ) STORED,
 
     created_at TIMESTAMP NOT NULL DEFAULT now(),
 

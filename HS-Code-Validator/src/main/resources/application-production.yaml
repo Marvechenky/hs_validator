@@ -17,5 +17,17 @@ spring:
 server:
   port: ${PORT:8080}
 
+google:
+  gemini:
+    api-key: ${GEMINI_API_KEY}
+
+gemini:
+  model:
+    name: gemini-2.5-flash
+
+logistics:
+  customs:
+    api-url: https://comtrade.un.org/data/doc/api/
+
 hscode:
   server-url: https://hs-code-validator.onrender.com
